@@ -1,0 +1,9 @@
+{
+  "service": {
+    "name": "Fictional operations portal"
+  },
+  "controls": {
+    "mfaEnforced": true,
+    "backupsEnabled": false
+  }
+}

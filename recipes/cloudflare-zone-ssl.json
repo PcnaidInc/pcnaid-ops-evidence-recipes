@@ -1,0 +1,50 @@
+{
+  "version": "1",
+  "id": "cloudflare-zone-ssl",
+  "name": "Cloudflare zone SSL mode",
+  "description": "Observe one zone SSL setting. A strict value passes this narrow recipe, not a comprehensive security assessment.",
+  "source": {
+    "kind": "cloudflare-zone-setting",
+    "url": "https://api.cloudflare.com/client/v4/zones/{zone_id}/settings/ssl",
+    "tokenEnv": "CLOUDFLARE_API_TOKEN",
+    "reference": "https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/get/",
+    "pagination": "single"
+  },
+  "fields": [
+    {
+      "name": "apiSuccess",
+      "path": "/success"
+    },
+    {
+      "name": "settingId",
+      "path": "/result/id"
+    },
+    {
+      "name": "sslMode",
+      "path": "/result/value"
+    }
+  ],
+  "checks": [
+    {
+      "id": "successful-response",
+      "field": "apiSuccess",
+      "operator": "equals",
+      "expected": true,
+      "description": "Cloudflare response reports success."
+    },
+    {
+      "id": "correct-setting",
+      "field": "settingId",
+      "operator": "equals",
+      "expected": "ssl",
+      "description": "Observation is the SSL setting."
+    },
+    {
+      "id": "strict-mode",
+      "field": "sslMode",
+      "operator": "equals",
+      "expected": "strict",
+      "description": "The observed SSL mode is strict."
+    }
+  ]
+}

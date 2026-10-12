@@ -1,0 +1,8 @@
+{
+  "name": "fictionalstorage",
+  "properties": {
+    "supportsHttpsTrafficOnly": true,
+    "minimumTlsVersion": "TLS1_2",
+    "allowBlobPublicAccess": false
+  }
+}

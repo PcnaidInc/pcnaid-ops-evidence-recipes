@@ -1,0 +1,6 @@
+{
+  "name": "fictionalstorage",
+  "properties": {
+    "supportsHttpsTrafficOnly": true
+  }
+}

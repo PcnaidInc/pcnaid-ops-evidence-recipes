@@ -1,0 +1,49 @@
+{
+  "version": "1",
+  "id": "custom-service-controls",
+  "name": "Custom service control snapshot",
+  "description": "Operator-defined singleton JSON contract. Adapt the fields to an authorized service; this is not a connector to an existing vendor.",
+  "source": {
+    "kind": "custom-rest",
+    "url": "https://status.example.com/control-snapshot",
+    "tokenEnv": "CUSTOM_EVIDENCE_TOKEN",
+    "reference": "https://example.com/operator-defined-contract",
+    "pagination": "single"
+  },
+  "fields": [
+    {
+      "name": "serviceName",
+      "path": "/service/name"
+    },
+    {
+      "name": "mfaEnforced",
+      "path": "/controls/mfaEnforced"
+    },
+    {
+      "name": "backupsEnabled",
+      "path": "/controls/backupsEnabled"
+    }
+  ],
+  "checks": [
+    {
+      "id": "service-known",
+      "field": "serviceName",
+      "operator": "nonempty",
+      "description": "The supplied service has a nonempty name."
+    },
+    {
+      "id": "mfa-observed",
+      "field": "mfaEnforced",
+      "operator": "equals",
+      "expected": true,
+      "description": "The operator-defined response asserts MFA enforcement."
+    },
+    {
+      "id": "backup-observed",
+      "field": "backupsEnabled",
+      "operator": "equals",
+      "expected": true,
+      "description": "The operator-defined response asserts backups enabled."
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "success": true,
+  "result": {
+    "id": "ssl",
+    "value": "strict",
+    "modified_on": "2026-10-05T12:00:00.000Z"
+  },
+  "errors": [],
+  "messages": []
+}
